@@ -20,4 +20,6 @@ Here are a few areas we'll need to work on to get started.
 
 # How is this different from typical tools?
 
-We won't just be looking at signature data, but comple
+We won't just be looking at signature data, but complex context data. We will analyze and return actual reason-based errors. 
+
+This type of typical endpoint analysis gives unactionable errors and reasoning. Our system will take data and give an actual reason for the flag, instead of an unrespondable error code. 
