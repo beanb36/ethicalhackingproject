@@ -4,6 +4,7 @@
 - Frequent write actions
 - Increased action logging
 - Keyboard related APIs? _maybe_
+- Action context 
 
 # What can I work on today?
 
