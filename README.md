@@ -1,26 +1,64 @@
 # Ethical Hacking Project
-> This is our Ethical Hacking final group project. Our goal is to create a keylogger _detection_ tool that monitors for suspicious processes on a computer. This will be a python script running on the computer. It will monitor suspicious actions that are common with keyloggers.
 
-- Frequent write actions
-- Increased action logging
-- Keyboard related APIs? _maybe_
-- Action context 
+This project is a keylogger detection prototype focused on contextual behavior, not static signatures.
 
-# What can I work on today?
+## What it does right now
 
-Here are a few areas we'll need to work on to get started. 
+- Collects running process telemetry (CPU, runtime, thread count, open files)
+- Scores process risk using context-based rules
+- Sorts all running processes by risk score
+- Explains why each risky process was flagged
+- Prompts the user to terminate high-risk processes
 
-- Importing running processes
-- Sorting running processes by risk
-- Context-based analysis
+## Risk model (version 0)
 
-  If something is running for 30 seconds, it is probably fine. 
-  If something is running for 6 hours straight, it should be marked suspicious. etc. 
-- Automatically prompting the user to stop running threats
-- A UI that notifies the user of potential threats
+Processes gain score based on indicators such as:
 
-# How is this different from typical tools?
+- Suspicious process naming (keylog/hook/capture/spy keywords)
+- Very long runtime (1+ hour and 6+ hours)
+- Elevated thread count
+- Elevated open file count
+- Sudden spikes in open-file activity
+- Elevated CPU usage
 
-We won't just be looking at signature data, but complex context data. We will analyze and return actual reason-based errors. 
+Then score is mapped to:
 
-This type of typical endpoint analysis gives unactionable errors and reasoning. Our system will take data and give an actual reason for the flag, instead of an unrespondable error code. 
+- Low
+- Medium
+- High
+- Critical 
+
+## Quick start
+
+1. Create and activate a virtual environment
+2. Install dependencies
+3. Run monitor
+
+```powershell
+pip install -r requirements.txt
+python main.py
+```
+
+## Current files
+
+- `main.py` : CLI entrypoint
+- `keyguard/collector.py` : process telemetry collection
+- `keyguard/risk.py` : risk scoring logic
+- `keyguard/monitor.py` : monitoring loop, display, and terminate prompt
+- `keyguard/models.py` : shared data models
+
+## Notes
+
+- False positives are expected
+- On Windows, terminating protected/system processes is restricted
+  - I can't seem to kill Microsoft Edge
+- Some process fields may be inaccessible
+
+
+## Suggested next steps
+
+- Add keyboard API call telemetry for stronger keylogger detection
+- Do more than just context checking. Adding in Signature data on top of context checks.
+- Add historical trend reports
+- Add desktop toast notifications / GUI
+- Train a baseline model per machine to reduce false positives
