@@ -62,3 +62,12 @@ python main.py
 - Add historical trend reports
 - Add desktop toast notifications / GUI
 - Train a baseline model per machine to reduce false positives
+
+
+## Feedback from Professor Sarker
+
+- Categorzed data
+- If taken code write source
+- Reasoning behind scores
+
+
