@@ -39,6 +39,22 @@ pip install -r requirements.txt
 python main.py
 ```
 
+## Test with a synthetic suspicious process
+
+Use this helper process to trigger heuristic markers (high thread count, high open files, frequent log writes, and sustained CPU). It does not capture keyboard input.
+
+```powershell
+python suspicious_process_sim.py --threads 90 --busy-threads 2 --open-files 70
+```
+
+In another terminal, run:
+
+```powershell
+python main.py --top 20
+```
+
+To include the runtime heuristic as well, keep the simulator running for 1+ hour.
+
 ## Current files
 
 - `main.py` : CLI entrypoint
