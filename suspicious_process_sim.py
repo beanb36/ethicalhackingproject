@@ -9,11 +9,7 @@ from pathlib import Path
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(
-        description=(
-            "sample process simulator for testing Chariot risk heuristics. "
-        )
-    )
+    parser = argparse.ArgumentParser()
     parser.add_argument(
         "--threads",
         type=int,

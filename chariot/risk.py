@@ -21,6 +21,10 @@ KNOWN_SAFE_NAMES = {
     "lsass.exe",
     "svchost.exe",
     "explorer.exe",
+    "firefox.exe",
+    "GoogleDriveFS.exe",
+    "msedgewebview2.exe",
+    "Obsidian.exe",
 }
 
 

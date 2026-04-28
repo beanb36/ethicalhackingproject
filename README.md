@@ -10,7 +10,7 @@ This project is a keylogger detection prototype focused on contextual behavior, 
 - Explains why each risky process was flagged
 - Prompts the user to terminate high-risk processes
 
-## Risk model (version 0)
+## Risk model (version 0.1)
 
 Processes gain score based on indicators such as:
 
@@ -44,7 +44,7 @@ python main.py
 Use this helper process to trigger heuristic markers (high thread count, high open files, frequent log writes, and sustained CPU). It does not capture keyboard input.
 
 ```powershell
-python suspicious_process_sim.py --threads 90 --busy-threads 2 --open-files 70
+python suspicious_process_sim.py --threads 90 --busy-threads 5 --open-files 70
 ```
 
 In another terminal, run:
@@ -58,10 +58,10 @@ To include the runtime heuristic as well, keep the simulator running for 1+ hour
 ## Current files
 
 - `main.py` : CLI entrypoint
-- `keyguard/collector.py` : process telemetry collection
-- `keyguard/risk.py` : risk scoring logic
-- `keyguard/monitor.py` : monitoring loop, display, and terminate prompt
-- `keyguard/models.py` : shared data models
+- `collector.py` : process telemetry collection
+- `risk.py` : risk scoring logic
+- `monitor.py` : monitoring loop, display, and terminate prompt
+- `models.py` : shared data models
 
 ## Notes
 
@@ -70,20 +70,8 @@ To include the runtime heuristic as well, keep the simulator running for 1+ hour
   - I can't seem to kill Microsoft Edge
 - Some process fields may be inaccessible
 
-
-## Suggested next steps
-
-- Add keyboard API call telemetry for stronger keylogger detection
-- Do more than just context checking. Adding in Signature data on top of context checks.
-- Add historical trend reports
-- Add desktop toast notifications / GUI
-- Train a baseline model per machine to reduce false positives
-
-
 ## Feedback from Professor Sarker
 
 - Categorzed data
 - If taken code write source
 - Reasoning behind scores
-
-

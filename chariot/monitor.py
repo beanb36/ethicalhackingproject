@@ -76,7 +76,7 @@ def _format_runtime(seconds: float) -> str:
 
 
 def _print_table(assessments: list[tuple[ProcessRecord, RiskResult]], top_n: int) -> None:
-    print("\nKeyGuard Monitor - Top Risky Processes")
+    print("\nTop Risky Processes")
     print("=" * 95)
     print(f"{'PID':>7}  {'Process':<25} {'Risk':<9} {'Score':>5} {'Runtime':>10} {'CPU%':>7} {'OpenFiles':>10}")
     print("-" * 95)
